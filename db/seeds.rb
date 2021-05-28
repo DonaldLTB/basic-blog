@@ -23,8 +23,9 @@ end
 puts "Create admin"
 User.create(
     first_name: "Admin",
-    email: "#admin@admin.com",
+    email: "admin@admin.com",
     password: "123456",
+    admin: true
 )
 
 puts "Seeding Articles"
