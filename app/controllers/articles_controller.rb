@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show]
+    # skip_before_action :authenticate_user!, only: [:index, :show]
     before_action :find_article, only: [:show, :update, :edit, :destroy]
     impressionist :actions=>[:show, :index]
 
@@ -51,6 +51,6 @@ class ArticlesController < ApplicationController
 
     def article_params
         params.require(:article).permit(:title, :content, :publish_date, :public)
-      end
+    end
 end
   

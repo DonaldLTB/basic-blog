@@ -14,8 +14,10 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+    </div>
   </body>
 </html>
