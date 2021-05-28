@@ -1,4 +1,5 @@
 Here come the articles
+    <%= link_to "New", new_article_path%>
 <div class="articles">
 <% @articles.order(created_at: :desc).each do |article| %>
     <div class="article">
