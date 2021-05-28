@@ -1,6 +1,14 @@
 Here come the articles
     <%= link_to "New", new_article_path%>
 <h1><%= @articles.count %> Articles</h1>
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an article"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 <div class="articles">
 <% @articles.order(created_at: :desc).each do |article| %>
     <div class="article">
