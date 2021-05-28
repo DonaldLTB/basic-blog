@@ -1,7 +1,10 @@
 # Blog
 
+Be sure to bundle & yarn install as well as rails db:migrate db:seed
+
 1. create db schema
 ![schema](./app/assets/images/schema.png)
+
 2 Models with 1:N relation (1 User to many articles)
 first model: User with device as gem. Also includes first_name as string and admin as boolean
 Second model: Article including title, content as string, public as boolean and publish_date as date. Also foreign key.
@@ -12,3 +15,5 @@ Second model: Article including title, content as string, public as boolean and 
 6. Creating view for article index and start using faker gem for seeding the DB
 7. Adding seeds and include default values for admin (User) and public (Article)
 8. Including new and create in the articles controller
+9. Adding impressionist gem for view count
+10. Adding pg-search gem in order to search for articles

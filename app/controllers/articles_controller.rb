@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
     impressionist :actions=>[:show, :index]
 
     def index
-      @articles = Article.all
+        if params[:query].present?
+            @articles = Article.search_by_title(params[:query])
+        else
+            @articles = Article.all
+        end
     end
 
     def show
