@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
     before_action :find_article, only: [:show, :update, :edit, :destroy]
+    impressionist :actions=>[:show, :index]
 
     def index
       @articles = Article.all
     end
 
-    def show; end
+    def show
+        impressionist(@article)
+    end
 
     def new 
         @article = Article.new
