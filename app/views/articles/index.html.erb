@@ -4,6 +4,9 @@ Here come the articles
     <div class="article">
         <h4><%= link_to article.title, article_path(article) %></h4>
         <p><%= article.content %></p>
+        <p><%= article.public %></p>
+        <p><%= article.publish_date %></p>
+        <p><%= article.user.first_name %></p>
     </div>
 <% end %>
 </div>
