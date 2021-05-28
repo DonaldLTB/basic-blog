@@ -1,15 +1,15 @@
 # Basic Blog
 
-Be sure to bundle & yarn install as well as rails db:migrate db:seed
+Be sure to bundle & yarn install as well as rails db:create db:migrate db:seed
 
 ### Gems additionally added(template excluded)
 faker, impressionist, pg-search and kaminari
 
 ## Flow of building
 
-1. Created a db schema\
 ![schema](./app/assets/images/schema.png)
 
+1. Created a db schema\
 Two Models with 1:N relation (1 User to many articles)\
 first model: User with device as gem. Also includes first_name as string and admin as boolean\
 Second model: Article including title, content as string, public as boolean and publish_date as date. Also foreign key.\
