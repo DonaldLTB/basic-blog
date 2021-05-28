@@ -1,6 +1,10 @@
 Here come the articles
     <%= link_to "New", new_article_path%>
+<% if params[:query].present? %>
 <h1><%= @articles.count %> Articles</h1>
+<% else %>
+<h1><%= Article.all.count %> Articles</h1>
+<% end %>
 <%= form_tag articles_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -8,6 +12,9 @@ Here come the articles
     placeholder: "Find an article"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% if params[:query].present? %>
+        <% @articles = Article.search_by_title(params[:query]).page params[:page] %>
+  <% end %>
 <% end %>
 <div class="articles">
 <% @articles.order(created_at: :desc).each do |article| %>
@@ -28,3 +35,4 @@ Here come the articles
     </div>
 <% end %>
 </div>
+<%= paginate @articles %>

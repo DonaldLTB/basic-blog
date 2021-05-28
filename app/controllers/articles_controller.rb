@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
             @articles = Article.search_by_title(params[:query])
         else
             @articles = Article.all
+            @articles = Article.page(params[:page]).per(5)
         end
     end
 
