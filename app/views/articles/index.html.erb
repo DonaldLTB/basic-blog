@@ -17,34 +17,32 @@
     <% end %>
     <%= link_to "New", new_article_path, class: "btn btn-primary" %>
 </div>
-<div class="table">
-    <tr>
-        <th>Title</th>
-        <th>Views Count</th>
-        <th>Author</th>
-        <th>Publish Date</th>
-        <th>Action</th>
-    </tr>
-    <% @articles.order(created_at: :desc).each do |article| %>
-    <div class="article">
+<div>
+    <table>
         <tr>
-        <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= article.impressionist_count %></td>
-        <% if !article.user.first_name.nil? %>
-        <td><%= article.user.first_name %></td>
-        <% else %>
-        <td>Unkown</td>
-        <% end %>
-        <td><%= article.publish_date %></td>
-        <td><%= link_to "Edit", edit_article_path(article)%>
-        <%= link_to "Show", article_path(article)%>
-        <% if article.user == current_user %>
-            <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: 'Are you sure?' }%></td>
-        <% end %>
+            <th>Title</th>
+            <th>Views</th>
+            <th>Author</th>
+            <th>Publish Date</th>
+            <th>Action</th>
         </tr>
-    </div>
-<% end %>
+    <% @articles.order(created_at: :desc).each do |article| %>
+        <tr>
+            <td><%= link_to article.title, article_path(article) %></td>
+            <td><%= article.impressionist_count %></td>
+            <% if !article.user.first_name.nil? %>
+                <td><%= article.user.first_name %></td>
+            <% else %>
+                <td>Unkown</td>
+            <% end %>
+            <td><%= article.publish_date %></td>
+            <td><%= link_to "Edit", edit_article_path(article)%>
+            <%= link_to "Show", article_path(article)%>
+            <% if article.user == current_user %>
+                <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+            <% end %>
+        </tr>
+    <% end %>
+    </table>
 </div>
 <%= paginate @articles %>
-
-
