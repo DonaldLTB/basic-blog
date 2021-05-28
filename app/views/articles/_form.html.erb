@@ -4,7 +4,7 @@
         <%= f.input :title %>
         <%= f.input :public, label: 'Is Published', as: :boolean, checked_value: true %>
         <%= f.input :publish_date, as: :date, html5: true %>
-        <%= f.input :content %>
+        <%= f.input :content, as: :text, input_html: {rows: 9} %>
         <%= f.submit "Save" %>
     <% end %>
 </div>
