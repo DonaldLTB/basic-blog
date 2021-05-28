@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :find_article, only: [:show]
+    before_action :find_article, only: [:show, :update, :edit, :destroy]
 
     def index
       @articles = Article.all
@@ -23,10 +23,18 @@ class ArticlesController < ApplicationController
         end
     end
 
+    def edit; end
+
     def update
+        @article.update(article_params)
+        redirect_to article_path(@article)
     end
 
-    def edit; end
+    def destroy
+        @article.destroy
+        redirect_to articles_path
+    end
+
     private
 
     def find_article
