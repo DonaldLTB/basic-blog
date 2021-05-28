@@ -28,10 +28,15 @@ User.create(
 )
 
 puts "Seeding Articles"
-
+users_for_seed = User.all
 25.times do
+    user = users_for_seed.sample
     Article.create(
-
+        title: Faker::Book.title,
+        content: Faker::Lorem.paragraph,
+        public: true,
+        publish_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
+        user_id: user.id
     )
 end
 
